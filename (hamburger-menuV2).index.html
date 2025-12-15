@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBSITE WAHYUSHOP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            color: #4dabf7;
+            font-size: 1.8rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: #4dabf7;
+        }
+        
+        /* DESKTOP MENU */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .nav-menu li a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 0;
+            transition: all 0.3s;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .nav-menu li a:hover {
+            color: #4dabf7;
+        }
+        
+        .nav-menu li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4dabf7;
+            transition: width 0.3s;
+        }
+        
+        .nav-menu li a:hover::after {
+            width: 100%;
+        }
+        
+        /* HAMBURGER BUTTON */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .hamburger-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        /* MOBILE MENU */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            justify-content: flex-end;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .mobile-menu {
+            width: 85%;
+            max-width: 320px;
+            height: 100%;
+            background: #111;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            animation: slideIn 0.4s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #333;
+            margin-bottom: 2rem;
+        }
+        
+        .mobile-header h2 {
+            color: #4dabf7;
+            font-size: 1.5rem;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: #ddd;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-nav {
+            list-style: none;
+            flex: 1;
+        }
+        
+        .mobile-nav li {
+            margin-bottom: 1rem;
+        }
+        
+        .mobile-nav li a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .mobile-nav li a:hover {
+            background: rgba(77, 171, 247, 0.1);
+            color: #4dabf7;
+        }
+        
+        .mobile-footer {
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+        
+        /* MAIN CONTENT */
+        .main-content {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* HEADER */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #333;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #4dabf7, #da77f2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-header p {
+            color: #aaa;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* PROFILE */
+        .profile-section {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0 3rem;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            background: linear-gradient(45deg, #4dabf7, #da77f2) border-box;
+            padding: 3px;
+            object-fit: cover;
+            box-shadow: 0 0 25px rgba(77, 171, 247, 0.4);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* CARDS */
+        .card {
+            background: #111;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+        }
+        
+        .card-title i {
+            color: #4dabf7;
+        }
+        
+        /* PRODUCTS GRID */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 1.5rem;
+        }
+        
+        .product-item {
+            background: linear-gradient(145deg, #1a1a1a, #222);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(77, 171, 247, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .product-item:hover::before {
+            left: 100%;
+        }
+        
+        .product-item:hover {
+            border-color: #4dabf7;
+            transform: translateY(-5px);
+        }
+        
+        .product-icon {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #4dabf7;
+        }
+        
+        .product-name {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #4dabf7;
+            margin: 1rem 0;
+        }
+        
+        .btn-order {
+            background: linear-gradient(45deg, #4dabf7, #339af0);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 1rem;
+        }
+        
+        .btn-order:hover {
+            background: linear-gradient(45deg, #339af0, #228be6);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(51, 154, 240, 0.3);
+        }
+        
+        /* PAYMENT SECTION */
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 1.5rem;
+        }
+        
+        .payment-card {
+            background: linear-gradient(145deg, #1a1a1a, #222);
+            border-radius: 12px;
+            padding: 1.8rem;
+            border-left: 4px solid #4dabf7;
+        }
+        
+        .payment-title {
+            font-weight: 600;
+            color: #ddd;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .payment-details {
+            background: #000;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 1rem;
+            border: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .payment-number {
+            font-family: monospace;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+        
+        .btn-copy {
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .btn-copy:hover {
+            background: #444;
+            border-color: #4dabf7;
+        }
+        
+        .payment-note {
+            color: #aaa;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 0.8rem;
+        }
+        
+        /* QR CODE SECTION */
+        .qris-section {
+            text-align: center;
+        }
+        
+        .qris-title {
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+        
+        .qrcode-container {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 1rem;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid #333;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .qrcode-container:hover {
+            transform: scale(1.05);
+            border-color: #4dabf7;
+        }
+        
+        .qrcode-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .qrcode-hint {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 0.95rem;
+        }
+        
+        /* WHATSAPP BUTTON */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            background: #111;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #333;
+            position: relative;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .modal-title {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-qrcode {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 1.5rem;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border: 3px solid #4dabf7;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 40px;
+            height: 40px;
+            background: #222;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hamburger-btn {
+                display: block;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+            
+            .payment-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .profile-img {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .whatsapp-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+            
+            .mobile-menu {
+                width: 90%;
+                padding: 1.5rem;
+            }
+            
+            .modal-content {
+                padding: 1.5rem;
+            }
+            
+            .modal-qrcode {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-store logo-icon"></i>
+            <h1>WAHYU<span>SHOP</span></h1>
+        </div>
+        
+        <!-- DESKTOP MENU -->
+        <ul class="nav-menu">
+            <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
+            <li><a href="#produk"><i class="fas fa-shopping-cart"></i> Produk</a></li>
+            <li><a href="#pembayaran"><i class="fas fa-credit-card"></i> Pembayaran</a></li>
+            <li><a href="https://t.me/WahyuShop9" target="_blank"><i class="fab fa-telegram"></i> Telegram</a></li>
+            <li><a href="https://t.me/wahyuchannel0" target="_blank"><i class="fas fa-broadcast-tower"></i> Channel</a></li>
+        </ul>
+        
+        <!-- HAMBURGER BUTTON -->
+        <button class="hamburger-btn" id="hamburgerBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <div class="mobile-menu">
+            <div class="mobile-header">
+                <h2>WAHYUSHOP</h2>
+                <button class="close-btn" id="closeMenuBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <ul class="mobile-nav">
+                <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
+                <li><a href="#produk"><i class="fas fa-shopping-cart"></i> Produk</a></li>
+                <li><a href="#pembayaran"><i class="fas fa-credit-card"></i> Pembayaran</a></li>
+                <li><a href="#" onclick="copyDana()"><i class="fas fa-wallet"></i> Salin DANA</a></li>
+                <li><a href="#" onclick="showQRModal()"><i class="fas fa-qrcode"></i> Lihat QRIS</a></li>
+                <li><a href="https://t.me/WahyuShop9" target="_blank"><i class="fab fa-telegram"></i> Telegram</a></li>
+                <li><a href="https://t.me/wahyuchannel0" target="_blank"><i class="fas fa-broadcast-tower"></i> Channel</a></li>
+            </ul>
+            
+            <div class="mobile-footer">
+                <p style="color: #aaa; font-size: 0.9rem;">Fast response via Telegram</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <div class="container">
+            <header class="page-header">
+                <h1>WEBSITE WAHYUSHOP</h1>
+                <p>Daftar Produk & Layanan dengan Harga Terjangkau</p>
+                
+                <div class="profile-section">
+                    <!-- Ganti dengan URL gambar yang valid -->
+                    <img src="https://via.placeholder.com/150/1a1a1a/4dabf7?text=WAHYUSHOP" 
+                         alt="Wahyushop Logo" 
+                         class="profile-img"
+                         onerror="this.src='https://via.placeholder.com/150/1a1a1a/4dabf7?text=WAHYUSHOP'">
+                </div>
+            </header>
+            
+            <!-- PRODUK SECTION -->
+            <section class="card" id="produk">
+                <h2 class="card-title"><i class="fas fa-shopping-cart"></i> Daftar Produk</h2>
+                
+                <div class="products-grid">
+                    <!-- Produk 1 -->
+                    <div class="product-item">
+                        <div class="product-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="product-name">MURBUG</div>
+                        <div class="product-price">Rp 3.000 - 10.000</div>
+                        <button class="btn-order" onclick="orderProduct('MURBUG')">
+                            <i class="fab fa-telegram"></i> Pesan via Telegram
+                        </button>
+                    </div>
+                    
+                    <!-- Produk 2 -->
+                    <div class="product-item">
+                        <div class="product-icon"><i class="fas fa-sun"></i></div>
+                        <div class="product-name">MURSUN</div>
+                        <div class="product-price">Rp 5.000</div>
+                        <button class="btn-order" onclick="orderProduct('MURSUN')">
+                            <i class="fab fa-telegram"></i> Pesan via Telegram
+                        </button>
+                    </div>
+                    
+                    <!-- Produk 3 -->
+                    <div class="product-item">
+                        <div class="product-icon"><i class="fas fa-file-powerpoint"></i></div>
+                        <div class="product-name">MURPP</div>
+                        <div class="product-price">Rp 12.000</div>
+                        <button class="btn-order" onclick="orderProduct('MURPP')">
+                            <i class="fab fa-telegram"></i> Pesan via Telegram
+                        </button>
+                    </div>
+                    
+                    <!-- Produk 4 -->
+                    <div class="product-item">
+                        <div class="product-icon"><i class="fas fa-code"></i></div>
+                        <div class="product-name">JASA WEBSITE PAYMENT</div>
+                        <div class="product-price">Rp 25.000</div>
+                        <button class="btn-order" onclick="orderProduct('JASA WEBSITE PAYMENT')">
+                            <i class="fab fa-telegram"></i> Pesan via Telegram
+                        </button>
+                    </div>
+                    
+                    <!-- Produk 5 -->
+                    <div class="product-item">
+                        <div class="product-icon"><i class="fas fa-laptop-code"></i></div>
+                        <div class="product-name">JASA WEBSITE PRODUK</div>
+                        <div class="product-price">Rp 35.000</div>
+                        <button class="btn-order" onclick="orderProduct('JASA WEBSITE PRODUK')">
+                            <i class="fab fa-telegram"></i> Pesan via Telegram
+                        </button>
+                    </div>
+                    
+                    <!-- Produk 6 -->
+                    <div class="product-item">
+                        <div class="product-icon"><i class="fas fa-robot"></i></div>
+                        <div class="product-name">JASA PASANG BOT</div>
+                        <div class="product-price">Rp 2.000</div>
+                        <button class="btn-order" onclick="orderProduct('JASA PASANG BOT')">
+                            <i class="fab fa-telegram"></i> Pesan via Telegram
+                        </button>
+                    </div>
+                    
+                    <!-- Produk 7 -->
+                    <div class="product-item">
+                        <div class="product-icon"><i class="fas fa-egg"></i></div>
+                        <div class="product-name">JASA PASANG EGG</div>
+                        <div class="product-price">Rp 6.000</div>
+                        <button class="btn-order" onclick="orderProduct('JASA PASANG EGG')">
+                            <i class="fab fa-telegram"></i> Pesan via Telegram
+                        </button>
+                    </div>
+                    
+                    <!-- Produk 8 -->
+                    <div class="product-item">
+                        <div class="product-icon"><i class="fas fa-ellipsis-h"></i></div>
+                        <div class="product-name">PRODUK LAINNYA</div>
+                        <div class="product-price">Hubungi Admin</div>
+                        <button class="btn-order" onclick="orderProduct('PRODUK LAINNYA')">
+                            <i class="fab fa-telegram"></i> Tanya Produk Lain
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- PEMBAYARAN SECTION -->
+            <section class="card" id="pembayaran">
+                <h2 class="card-title"><i class="fas fa-credit-card"></i> Metode Pembayaran</h2>
+                
+                <div class="payment-grid">
+                    <!-- DANA -->
+                    <div class="payment-card">
+                        <div class="payment-title">
+                            <i class="fas fa-wallet"></i> DANA
+                        </div>
+                        <div class="payment-details">
+                            <span class="payment-number" id="danaNumber">083152987363</span>
+                            <button class="btn-copy" onclick="copyDana()">
+                                <i class="far fa-copy"></i> Salin
+                            </button>
+                        </div>
+                        <div class="payment-note">BELUM PREMIUM</div>
+                    </div>
+                    
+                    <!-- QRIS -->
+                    <div class="payment-card qris-section">
+                        <div class="payment-title">
+                            <i class="fas fa-qrcode"></i> QRIS
+                        </div>
+                        <div class="qris-title">Ahmad Setio Wahyudi</div>
+                        <div class="qrcode-container" onclick="showQRModal()">
+                            <!-- Ganti dengan URL QRIS yang valid -->
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=083152987363-Wahyushop" 
+                                 alt="QR Code" 
+                                 class="qrcode-img"
+                                 onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=083152987363-Wahyushop'">
+                        </div>
+                        <p class="qrcode-hint">Klik untuk memperbesar</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- FOOTER -->
+            <footer>
+                <p>&copy; 2023 Wahyushop | Telegram: @WahyuShop9 | Channel: @wahyuchannel0</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #666;">Layanan Topup & PPOB Terpercaya</p>
+            </footer>
+        </div>
+    </main>
+    
+    <!-- WHATSAPP BUTTON -->
+    <a href="https://wa.me/6283152987363?text=Halo%20Wahyushop%2C%20saya%20ingin%20bertanya%20tentang%20produk" 
+       class="whatsapp-btn" 
+       target="_blank"
+       title="Chat via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- QR MODAL -->
+    <div class="modal" id="qrModal">
+        <div class="modal-content">
+            <div class="modal-title">Ahmad Setio Wahyudi - QRIS</div>
+            <div class="modal-qrcode">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=083152987363-Wahyushop" 
+                     alt="QR Code" 
+                     class="qrcode-img"
+                     onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=083152987363-Wahyushop'">
+            </div>
+            <button class="modal-close" onclick="closeQRModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        // DOM Elements
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const qrModal = document.getElementById('qrModal');
+        const danaNumber = document.getElementById('danaNumber');
+        
+        // Mobile Menu Functions
+        function openMobileMenu() {
+            mobileMenu.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenu() {
+            mobileMenu.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        hamburgerBtn.addEventListener('click', openMobileMenu);
+        closeMenuBtn.addEventListener('click', closeMobileMenu);
+        
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                closeMobileMenu();
+            }
+        });
+        
+        // QR Modal Functions
+        function showQRModal() {
+            qrModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            closeMobileMenu();
+        }
+        
+        function closeQRModal() {
+            qrModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        qrModal.addEventListener('click', (e) => {
+            if (e.target === qrModal) {
+                closeQRModal();
+            }
+        });
+        
+        // Copy DANA Function
+        function copyDana() {
+            const textToCopy = danaNumber.textContent;
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Show success feedback
+                const originalText = danaNumber.textContent;
+                danaNumber.textContent = 'Tersalin!';
+                danaNumber.style.color = '#4dabf7';
+                
+                setTimeout(() => {
+                    danaNumber.textContent = originalText;
+                    danaNumber.style.color = '#fff';
+                }, 1500);
+                
+                closeMobileMenu();
+            }).catch(err => {
+                console.error('Gagal menyalin: ', err);
+                alert('Gagal menyalin nomor DANA. Silakan salin manual: ' + textToCopy);
+            });
+        }
+        
+        // Order Product Function
+        function orderProduct(productName) {
+            const message = `Halo Wahyushop, saya ingin membeli ${productName}`;
+            const telegramUrl = `https://t.me/WahyuShop9?text=${encodeURIComponent(message)}`;
+            
+            const confirmed = confirm(`Pesan "${productName}" via Telegram?`);
+            
+            if (confirmed) {
+                window.open(telegramUrl, '_blank');
+            }
+        }
+        
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        closeMobileMenu();
+                    }
+                }
+            });
+        });
+        
+        // Close Modals with Escape Key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (mobileMenu.style.display === 'flex') {
+                    closeMobileMenu();
+                }
+                if (qrModal.style.display === 'flex') {
+                    closeQRModal();
+                }
+            }
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Website Wahyushop berhasil dimuat!');
+        });
+    </script>
+</body>
+</html>
